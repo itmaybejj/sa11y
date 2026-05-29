@@ -1,6 +1,6 @@
 /*!
       * Sa11y, the accessibility quality assurance assistant.
-      * @version 5.0.4
+      * @version 5.0.5
       * @author Adam Chaboryk
       * @license GPL-2.0-or-later
       * @copyright © 2020 - 2026 Toronto Metropolitan University.
@@ -1989,7 +1989,7 @@ ${JSON.stringify(State.option)}
 
 ## Details
 - **URL:** ${url2}
-- **Version:** ${"5.0.4"}
+- **Version:** ${"5.0.5"}
 
 ## Comments
 `;
@@ -2006,7 +2006,7 @@ ${JSON.stringify(State.option)}
       this.error.stack,
       document.createElement("br"),
       document.createElement("br"),
-      `Version: ${"5.0.4"}`,
+      `Version: ${"5.0.5"}`,
       document.createElement("br"),
       `URL: ${url2}`,
       document.createElement("br"),
@@ -3627,8 +3627,8 @@ const computeAccessibleName = (element, exclusions = [], recursing = 0) => {
   if (addTitleIfNoName && !aText) {
     and(addTitleIfNoName);
   }
-  const pua = /[\uE000-\uF8FF]/gu;
-  if (!computedText.trim() || !computedText.trim() && pua.test(computedText)) {
+  computedText = computedText.replace(/[\uE000-\uF8FF]/gu, "");
+  if (!computedText.trim()) {
     computedText = wrapPseudoContent(element, "");
     if (!computedText.trim() && element.hasAttribute("title")) {
       return element.getAttribute("title");
@@ -8430,7 +8430,7 @@ class ControlPanel extends HTMLElement {
     const container = document.createElement("div");
     container.setAttribute("id", "container");
     container.setAttribute("role", "region");
-    container.setAttribute("data-sa11y-version", "5.0.4");
+    container.setAttribute("data-sa11y-version", "5.0.5");
     container.setAttribute("lang", Lang._("LANG_CODE"));
     container.setAttribute("aria-label", Lang._("CONTAINER_LABEL"));
     container.setAttribute("dir", Constants.Global.langDirection);
