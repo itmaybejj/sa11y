@@ -14,7 +14,8 @@ export default function find(selector, desiredRoot, exclude) {
   if (desiredRoot === 'document') {
     root.push(document.body);
     if (State.option.fixedRoots) {
-      root.push(State.option.fixedRoots);
+      // fixedRoots are an array of objects with a fixedRoot and a positioner.
+      root.push(State.option.fixedRoots.map((entry) => entry?.fixedRoot).filter(Boolean));
     }
   } else if (desiredRoot === 'root') {
     root.push(Constants.Root.areaToCheck);
