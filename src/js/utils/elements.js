@@ -188,10 +188,7 @@ const Elements = (function myElements() {
     // Iterate on Found.Everything based on tag name.
     for (let i = 0; i < Found.Everything.length; i++) {
       const $el = Found.Everything[i];
-      // Elements inside an iframed fixedRoot fail `instanceof Element`
-      // so we have to use exists + nodeType === 1 instead.
       if (!$el || $el.nodeType !== 1) continue;
-
       const tag = $el.tagName;
       const role = $el.getAttribute('role')?.trim().toLowerCase();
       let handledByRole = false;
